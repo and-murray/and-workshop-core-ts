@@ -1,4 +1,4 @@
-const assert = require("../1-theBasics");
+import assert from "../1-theBasics";
 
 describe(".toBeTruthy", () => {
   test("Will show true as equal to true", () => {
@@ -45,7 +45,7 @@ describe(".toBeArray", () => {
   test("Will not show non-arrays as arrays", () => {
     expect(assert({}).toBeArray()).toEqual(false);
     expect(assert(new Uint8Array()).toBeArray()).toEqual(false);
-    expect(assert(new ArrayBuffer()).toBeArray()).toEqual(false);
+    expect(assert(new ArrayBuffer(0)).toBeArray()).toEqual(false);
     expect(assert("test").toBeArray()).toEqual(false);
   });
 });

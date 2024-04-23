@@ -1,8 +1,4 @@
-const {
-  myFirstPromise,
-  arrayConverter,
-  caughtPromise,
-} = require("../4-promises");
+import { myFirstPromise, arrayConverter, caughtPromise } from "../4-promises";
 
 describe("myFirstPromise", () => {
   test('should return "Yarrr!" if the promise resolves', () => {

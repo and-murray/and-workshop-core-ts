@@ -1,15 +1,9 @@
-const {
-  moduleCalc,
-  ConstructorCalc,
-  ClassCalc,
-  PrototypeCalc,
-} = require("../3-objectOriented");
+import { moduleCalc, ClassCalc, StaticClassCalc } from "../3-objectOriented";
 
+// These tests won't even compile until you have implemtations!
 describe.each([
   { name: "Module", calc: moduleCalc },
-  { name: "Constructor", calc: new ConstructorCalc() },
-  { name: "Class", calc: ClassCalc },
-  { name: "Prototype", calc: new PrototypeCalc() },
+  { name: "Class", calc: new ClassCalc() },
 ])("$name", ({ calc }) => {
   describe("Sum", () => {
     test("Returns 0 when no numbers given", () => {

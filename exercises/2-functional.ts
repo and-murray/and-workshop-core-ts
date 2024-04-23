@@ -17,8 +17,12 @@
 // If both objects have an item for the same key, the value from the input object should take precidence
 
 // This is your lodash library. Add your own implementation for each method
-module.exports = {
-  reduce: (inputArray, callback, initialValue) => {},
-  map: (inputArray, callback) => {},
-  defaults: (inputObject, defaults) => {},
+export default {
+  reduce: (
+    inputArray: any[],
+    callback: (previousValue: any, currentValue: any) => any,
+    initialValue?: any
+  ): any => {},
+  map: (inputArray: any[], callback: (item: any) => any) => {},
+  defaults: (inputObject: {}, defaults: {}): any => {},
 };

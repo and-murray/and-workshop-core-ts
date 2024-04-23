@@ -20,7 +20,7 @@
 // `actualValue` will need to be called as part of your code
 
 // This is your assert library. Add your own implementation for each method
-module.exports = function assert(actualValue) {
+export default function assert(actualValue?: any) {
   return {
     toBeTruthy: () => {
       return false;
@@ -31,11 +31,17 @@ module.exports = function assert(actualValue) {
     toBeArray: () => {
       return false;
     },
-    toBe: (expectedValue) => {
+    toBe: (expectedValue: any) => {
       return false;
     },
     toThrow: () => {
       return false;
     },
+    toHaveLength: (len: number) => {
+      return false;
+    },
+    toContain: (expected: any) => {},
   };
-};
+}
+
+// TODO: a bunch more
