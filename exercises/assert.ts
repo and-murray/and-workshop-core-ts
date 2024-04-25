@@ -34,32 +34,55 @@
 // return true or false based on whether the `actualValue` has a property with the name `expectedProperty` and value `expectedValue`
 // `actualValue` will need to be called as part of your code
 
+// hint: if the type of the actualValue isn't what is expected for the assertion, just return false!
+
 // This is your assert library. Add your own implementation for each method
-export default function assert<T>(actualValue?: T) {
+export default function assert(actualValue?: any) {
   return {
     toBeTruthy: () => {
-      return false;
+      return !!actualValue;
     },
+
     toBeUndefined: () => {
-      return false;
+      return typeof actualValue === "undefined";
     },
+
     toBeArray: () => {
-      return false;
+      return Array.isArray(actualValue);
     },
+
     toBe: (expectedValue: any) => {
-      return false;
+      return expectedValue === actualValue;
     },
+
     toThrow: (expectedMessage?: string) => {
-      return false;
+      let result = false;
+      if (typeof actualValue === "function") {
+        try {
+          actualValue();
+        } catch (e) {
+          const error = e as Error;
+          result = true;
+          if (expectedMessage && error.message !== expectedMessage) {
+            result = false;
+          }
+        }
+      }
+      return result;
     },
+
     toHaveLength: (expectedLength: number) => {
-      return false;
+      let result = false;
+      if (Array.isArray(actualValue)) {
+        result = actualValue.length === expectedLength;
+      } else if (typeof actualValue === "string") {
+        result = actualValue.length === expectedLength;
+      }
+      return result;
     },
-    toContain: (expectedValue: T extends (infer U)[] ? U : T) => {
-      return false;
-    },
+
     toHaveProperty: (expectedProperty: string, expectedValue?: any) => {
       return false;
-    }
+    },
   };
 }
