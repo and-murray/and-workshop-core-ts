@@ -1,4 +1,4 @@
-import assert from "../1-theBasics";
+import assert from "../assert";
 
 describe(".toBeTruthy", () => {
   test("Will show true as equal to true", () => {
@@ -73,7 +73,7 @@ describe(".toBe", () => {
 });
 
 describe(".toThrow", () => {
-  test("Will return true if the function throws an error", () => {
+  test("Will return true i`f the function throws an error", () => {
     expect(
       assert(() => {
         throw new Error();
@@ -81,7 +81,79 @@ describe(".toThrow", () => {
     ).toEqual(true);
   });
 
+  test("Will return true if the function throws an error with the expected message", () => {
+    expect(
+      assert(() => {
+        throw new Error("error_error");
+      }).toThrow("error_error")
+    ).toEqual(true);
+  });
+
   test("Will return false if the function doesn't throw an error", () => {
     expect(assert(() => {}).toThrow()).toEqual(false);
+  });
+});
+
+describe(".toHaveLength", () => {
+  test("Will return true if array has given length", () => {
+    expect(assert([]).toHaveLength(0)).toEqual(true);
+    expect(assert([0, 1, 2]).toHaveLength(3)).toEqual(true);
+  });
+  test("Will return false if array does not have given length", () => {
+    expect(assert([]).toHaveLength(1)).toEqual(false);
+    expect(assert([0, 1, 3, 3, 4, 5]).toHaveLength(5)).toEqual(false);
+  });
+});
+
+describe(".toContain", () => {
+  test("Works for arrays", () => {
+    expect(assert([0, 1, 3]).toContain(1)).toEqual(true);
+    expect(assert([0, 1]).toContain(4)).toEqual(false);
+    expect(assert(["hello", "goodbye"]).toContain("hellow")).toEqual(true);
+  });
+
+  test("Works for strings", () => {
+    expect(assert("my string").toContain("string")).toEqual(true);
+    expect(assert("my string").toContain("nope")).toEqual(false);
+  });
+});
+
+describe(".toHaveProperty", () => {
+  test("Will return true if object has property", () => {
+    expect(assert({ key: "value" }).toHaveProperty("key")).toEqual(true);
+    expect(
+      assert({
+        key: "value",
+        another_key: "another_value"
+      }).toHaveProperty("another_key")
+    ).toEqual(true);
+  });
+
+  test("Will return false if object does not have property", () => {
+    expect(assert({ key: "value" }).toHaveProperty("nope")).toEqual(false);
+  });
+
+  test("Will return true if object has property and value", () => {
+    expect(assert({ key: "value" }).toHaveProperty("key", "value")).toEqual(
+      true
+    );
+    expect(
+      assert({
+        key: "value",
+        another_key: "another_value"
+      }).toHaveProperty("another_key", "another_value")
+    ).toEqual(true);
+  });
+
+  test("Will return false if object does have property and value", () => {
+    expect(assert({ key: "value" }).toHaveProperty("key", "nope")).toEqual(
+      false
+    );
+    expect(
+      assert({
+        key: "value",
+        another_key: "another_value"
+      }).toHaveProperty("key", "another_value")
+    ).toEqual(false);
   });
 });

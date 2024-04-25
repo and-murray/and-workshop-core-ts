@@ -2,8 +2,8 @@
   "name": "corejs",
   "version": "1.0.0",
   "description": "",
-  "main": "",
   "scripts": {
+    "test": "jest",
     "exercise::basics": "jest exercises[/\\]__tests__[/\\]1-theBasics.test.ts --watch",
     "exercise::functional": "jest exercises[/\\]__tests__[/\\]2-functional.test.ts --watch",
     "exercise::object-oriented": "jest exercises[/\\]__tests__[/\\]3-objectOriented.test.ts --watch",
