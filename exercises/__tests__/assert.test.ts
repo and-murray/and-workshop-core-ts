@@ -73,7 +73,7 @@ describe(".toBe", () => {
 });
 
 describe(".toThrow", () => {
-  test("Will return true i`f the function throws an error", () => {
+  test("Will return true if the function throws an error", () => {
     expect(
       assert(() => {
         throw new Error();
@@ -91,6 +91,10 @@ describe(".toThrow", () => {
 
   test("Will return false if the function doesn't throw an error", () => {
     expect(assert(() => {}).toThrow()).toEqual(false);
+  });
+
+  test("Will return false if not a function", () => {
+    expect(assert({}).toThrow()).toEqual(false);
   });
 });
 
@@ -112,8 +116,11 @@ describe(".toHaveLength", () => {
   test("Will return false if string does not have given length", () => {
     expect(assert("five").toHaveLength(4)).toEqual(true);
   });
-});
 
+  test("Will return false if not passed array or string", () => {
+    expect(assert(123).toHaveLength(123)).toEqual(false);
+  });
+});
 describe(".toHaveProperty", () => {
   test("Will return true if object has property", () => {
     expect(assert({ key: "value" }).toHaveProperty("key")).toEqual(true);

@@ -24,17 +24,12 @@
 // return true or false based on whether the `actualValue` has a length that matches `expectedValue`
 // `actualValue` will need to be called as part of your code
 
-// ## Implement .toContain
-// when `actualValue `is an array return true or false based on whether the `expectedValue` is within the array
-// when `actualValue` is a string return true or false based on whether the `expectedValue` is a substring
-// `actualValue` will need to be called as part of your code
-
 // ## Implement .toHaveProperty
 // return true or false based on whether the `actualValue` has a property with the name `expectedProperty`
 // return true or false based on whether the `actualValue` has a property with the name `expectedProperty` and value `expectedValue`
 // `actualValue` will need to be called as part of your code
 
-// hint: if the type of the actualValue isn't what is expected for the assertion, just return false!
+// ### HINT: if the type of the actualValue isn't what is expected for the assertion, just return false!
 
 // This is your assert library. Add your own implementation for each method
 export default function assert(actualValue?: any) {
@@ -56,32 +51,33 @@ export default function assert(actualValue?: any) {
     },
 
     toThrow: (expectedMessage?: string) => {
-      let result = false;
       if (typeof actualValue === "function") {
         try {
           actualValue();
         } catch (e) {
-          const error = e as Error;
-          result = true;
-          if (expectedMessage && error.message !== expectedMessage) {
-            result = false;
+          if (expectedMessage) {
+            return e.message !== expectedMessage;
           }
+          return true;
         }
       }
-      return result;
+      return false;
     },
 
     toHaveLength: (expectedLength: number) => {
-      let result = false;
-      if (Array.isArray(actualValue)) {
-        result = actualValue.length === expectedLength;
-      } else if (typeof actualValue === "string") {
-        result = actualValue.length === expectedLength;
+      if (Array.isArray(actualValue) || typeof actualValue === "string") {
+        return actualValue.length === expectedLength;
       }
-      return result;
+      return false;
     },
 
     toHaveProperty: (expectedProperty: string, expectedValue?: any) => {
+      if (typeof actualValue === "object") {
+        if (expectedValue !== undefined) {
+          return actualValue[expectedProperty] === expectedValue;
+        }
+        return expectedProperty in actualValue;
+      }
       return false;
     },
   };
