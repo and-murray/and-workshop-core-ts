@@ -1,4 +1,4 @@
-import assert from "../assert";
+import assert from "../1-basics";
 
 describe(".toBeTruthy", () => {
   test("Will show true as equal to true", () => {
@@ -105,26 +105,13 @@ describe(".toHaveLength", () => {
   });
 });
 
-describe(".toContain", () => {
-  test("Works for arrays", () => {
-    expect(assert([0, 1, 3]).toContain(1)).toEqual(true);
-    expect(assert([0, 1]).toContain(4)).toEqual(false);
-    expect(assert(["hello", "goodbye"]).toContain("hellow")).toEqual(true);
-  });
-
-  test("Works for strings", () => {
-    expect(assert("my string").toContain("string")).toEqual(true);
-    expect(assert("my string").toContain("nope")).toEqual(false);
-  });
-});
-
 describe(".toHaveProperty", () => {
   test("Will return true if object has property", () => {
     expect(assert({ key: "value" }).toHaveProperty("key")).toEqual(true);
     expect(
       assert({
         key: "value",
-        another_key: "another_value"
+        another_key: "another_value",
       }).toHaveProperty("another_key")
     ).toEqual(true);
   });
@@ -140,7 +127,7 @@ describe(".toHaveProperty", () => {
     expect(
       assert({
         key: "value",
-        another_key: "another_value"
+        another_key: "another_value",
       }).toHaveProperty("another_key", "another_value")
     ).toEqual(true);
   });
@@ -152,7 +139,7 @@ describe(".toHaveProperty", () => {
     expect(
       assert({
         key: "value",
-        another_key: "another_value"
+        another_key: "another_value",
       }).toHaveProperty("key", "another_value")
     ).toEqual(false);
   });

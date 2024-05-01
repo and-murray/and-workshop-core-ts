@@ -22,20 +22,17 @@
 
 // ## Implement .toHaveLength
 // return true or false based on whether the `actualValue` has a length that matches `expectedValue`
-// `actualValue` will need to be called as part of your code
-
-// ## Implement .toContain
-// when `actualValue `is an array return true or false based on whether the `expectedValue` is within the array
-// when `actualValue` is a string return true or false based on whether the `expectedValue` is a substring
-// `actualValue` will need to be called as part of your code
+// should accept arrays and strings
 
 // ## Implement .toHaveProperty
 // return true or false based on whether the `actualValue` has a property with the name `expectedProperty`
 // return true or false based on whether the `actualValue` has a property with the name `expectedProperty` and value `expectedValue`
-// `actualValue` will need to be called as part of your code
+
+// ## Implement .toHaveType
+// return true or false based on whether the `actualValue` is of type `expectedType`
 
 // This is your assert library. Add your own implementation for each method
-export default function assert<T>(actualValue?: T) {
+export default function assert(actualValue?: unknown) {
   return {
     toBeTruthy: () => {
       return false;
@@ -46,7 +43,7 @@ export default function assert<T>(actualValue?: T) {
     toBeArray: () => {
       return false;
     },
-    toBe: (expectedValue: any) => {
+    toBe: (expectedValue: unknown) => {
       return false;
     },
     toThrow: (expectedMessage?: string) => {
@@ -55,11 +52,11 @@ export default function assert<T>(actualValue?: T) {
     toHaveLength: (expectedLength: number) => {
       return false;
     },
-    toContain: (expectedValue: T extends (infer U)[] ? U : T) => {
-      return false;
-    },
     toHaveProperty: (expectedProperty: string, expectedValue?: any) => {
       return false;
-    }
+    },
+    toHaveType: (expectedType: string) => {
+      return false;
+    },
   };
 }
