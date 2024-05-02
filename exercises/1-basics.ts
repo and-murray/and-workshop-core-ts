@@ -88,7 +88,7 @@ export default function assert(actualValue?: unknown) {
       return false;
     },
     toHaveType: (expectedType: string) => {
-      return false;
+      return typeof actualValue === expectedType;
     },
   };
 }
