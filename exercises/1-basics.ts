@@ -22,15 +22,17 @@
 
 // ## Implement .toHaveLength
 // return true or false based on whether the `actualValue` has a length that matches `expectedValue`
-// `actualValue` will need to be called as part of your code
+// should accept arrays and strings
 
 // ## Implement .toHaveProperty
 // return true or false based on whether the `actualValue` has a property with the name `expectedProperty`
 // return true or false based on whether the `actualValue` has a property with the name `expectedProperty` and value `expectedValue`
-// `actualValue` will need to be called as part of your code
 // HINT: try casting the actualValue - `const obj = actualValue as Record<typeof expectedProperty, unknown>;`
 
 // ### HINT: if the type of the actualValue isn't what is expected for the assertion, throw an Error with a helpful message
+
+// ## Implement .toHaveType
+// return true or false based on whether the `actualValue` is of type `expectedType`
 
 // This is your assert library. Add your own implementation for each method
 export default function assert(actualValue?: unknown) {
@@ -83,6 +85,9 @@ export default function assert(actualValue?: unknown) {
         }
         return expectedProperty in obj;
       }
+      return false;
+    },
+    toHaveType: (expectedType: string) => {
       return false;
     },
   };
