@@ -28,11 +28,12 @@
 // return true or false based on whether the `actualValue` has a property with the name `expectedProperty`
 // return true or false based on whether the `actualValue` has a property with the name `expectedProperty` and value `expectedValue`
 // `actualValue` will need to be called as part of your code
+// HINT: try casting the actualValue - `const obj = actualValue as Record<typeof expectedProperty, unknown>;`
 
-// ### HINT: if the type of the actualValue isn't what is expected for the assertion, just return false!
+// ### HINT: if the type of the actualValue isn't what is expected for the assertion, throw an Error with a helpful message
 
 // This is your assert library. Add your own implementation for each method
-export default function assert(actualValue?: any) {
+export default function assert(actualValue?: unknown) {
   return {
     toBeTruthy: () => {
       return !!actualValue;
@@ -71,12 +72,16 @@ export default function assert(actualValue?: any) {
       return false;
     },
 
-    toHaveProperty: (expectedProperty: string, expectedValue?: any) => {
+    toHaveProperty: (
+      expectedProperty: string | number | symbol,
+      expectedValue?: unknown
+    ) => {
       if (typeof actualValue === "object") {
+        const obj = actualValue as Record<typeof expectedProperty, unknown>;
         if (expectedValue !== undefined) {
-          return actualValue[expectedProperty] === expectedValue;
+          return obj[expectedProperty] === expectedValue;
         }
-        return expectedProperty in actualValue;
+        return expectedProperty in obj;
       }
       return false;
     },

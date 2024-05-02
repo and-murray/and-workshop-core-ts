@@ -1,4 +1,4 @@
-import assert from "../assert";
+import assert from "../1-basics";
 
 describe(".toBeTruthy", () => {
   test("Will show true as equal to true", () => {
@@ -124,6 +124,7 @@ describe(".toHaveLength", () => {
 describe(".toHaveProperty", () => {
   test("Will return true if object has property", () => {
     expect(assert({ key: "value" }).toHaveProperty("key")).toEqual(true);
+    expect(assert({ 4: "four" }).toHaveProperty(4)).toEqual(true);
     expect(
       assert({
         key: "value",
@@ -140,6 +141,8 @@ describe(".toHaveProperty", () => {
     expect(assert({ key: "value" }).toHaveProperty("key", "value")).toEqual(
       true
     );
+    expect(assert({ 4: "four" }).toHaveProperty(4, "four")).toEqual(true);
+
     expect(
       assert({
         key: "value",
