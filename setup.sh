@@ -2,6 +2,8 @@
 if ! command -v brew &>/dev/null; then
     echo "Homebrew is not installed. Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    source ~/.zprofile
 else
     echo "Homebrew is already installed."
 fi
@@ -65,6 +67,7 @@ if [ ! -d "$HOME/.deno" ]; then
     curl -fsSL https://deno.land/x/install/install.sh | sh
     echo 'export DENO_INSTALL="/Users/tdo261/.deno"' >> ~/.zshrc
     echo 'export PATH="$DENO_INSTALL/bin:$PATH"' >> ~/.zshrc
+    source ~/.zshrc
     deno jupyter --unstable --install
 else
     echo "deno is already installed."
