@@ -62,6 +62,8 @@ fi
 if [ ! -d "$HOME/.deno" ]; then
     echo "deno is not installed. Installing deno..."
     curl -fsSL https://deno.land/x/install/install.sh | sh
+    echo 'export DENO_INSTALL="/Users/tdo261/.deno"' >> ~/.zshrc
+    echo 'export PATH="$DENO_INSTALL/bin:$PATH"' >> ~/.zshrc
     deno jupyter --unstable --install
 else
     echo "deno is already installed."
