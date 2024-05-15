@@ -1,3 +1,12 @@
+# homebrew
+if ! command -v brew &>/dev/null; then
+    echo "Homebrew is not installed. Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    echo "Homebrew is already installed."
+fi
+
+
 # vscode
 if [ ! -d "/Applications/Visual Studio Code.app" ]; then
     echo "Visual Studio Code is not installed. Installing Visual Studio Code"
@@ -13,14 +22,6 @@ if "$code_path" --list-extensions 2>/dev/null | grep -q "ms-toolsai.jupyter"; th
 else
     echo "The 'ms-toolsai.jupyter' extension is not installed. Installing the extension..."
     "$code_path" --install-extension ms-toolsai.jupyter
-fi
-
-# homebrew
-if ! command -v brew &>/dev/null; then
-    echo "Homebrew is not installed. Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-    echo "Homebrew is already installed."
 fi
 
 # nvm
