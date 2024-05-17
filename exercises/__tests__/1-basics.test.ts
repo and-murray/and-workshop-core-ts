@@ -89,6 +89,14 @@ describe(".toThrow", () => {
     ).toEqual(true);
   });
 
+  test("Will return false if the function throws an error with a different message", () => {
+    expect(
+      assert(() => {
+        throw new Error("error_error_error");
+      }).toThrow("error_error")
+    ).toEqual(false);
+  });
+
   test("Will return false if the function doesn't throw an error", () => {
     expect(assert(() => {}).toThrow()).toEqual(false);
   });
