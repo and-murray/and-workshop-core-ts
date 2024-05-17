@@ -59,7 +59,7 @@ export default function assert(actualValue?: unknown) {
           actualValue();
         } catch (e) {
           if (expectedMessage) {
-            return e.message !== expectedMessage;
+            return e.message === expectedMessage;
           }
           return true;
         }
