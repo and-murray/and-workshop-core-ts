@@ -17,10 +17,22 @@
 
 // ## Implement .toThrow
 // return true or false based on whether the function passed as `actualValue` throws an error when you call it
+// return true or false based on whether the function passed as `actualValue` throws an error when you call it and if `expectedMessage` matches the error message.
 // `actualValue` will need to be called as part of your code
 
+// ## Implement .toHaveLength
+// return true or false based on whether the `actualValue` has a length that matches `expectedValue`
+// should accept arrays and strings
+
+// ## Implement .toHaveProperty
+// return true or false based on whether the `actualValue` has a property with the name `expectedProperty`
+// return true or false based on whether the `actualValue` has a property with the name `expectedProperty` and value `expectedValue`
+
+// ## Implement .toHaveType
+// return true or false based on whether the `actualValue` is of type `expectedType`
+
 // This is your assert library. Add your own implementation for each method
-module.exports = function assert(actualValue) {
+export default function assert(actualValue?: unknown) {
   return {
     toBeTruthy: () => {
       return false;
@@ -31,11 +43,20 @@ module.exports = function assert(actualValue) {
     toBeArray: () => {
       return false;
     },
-    toBe: (expectedValue) => {
+    toBe: (expectedValue: unknown) => {
       return false;
     },
-    toThrow: () => {
+    toThrow: (expectedMessage?: string) => {
+      return false;
+    },
+    toHaveLength: (expectedLength: number) => {
+      return false;
+    },
+    toHaveProperty: (expectedProperty: string, expectedValue?: any) => {
+      return false;
+    },
+    toHaveType: (expectedType: string) => {
       return false;
     },
   };
-};
+}

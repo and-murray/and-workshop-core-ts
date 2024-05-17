@@ -12,7 +12,7 @@ function myFirstPromise() {}
 // Then loop over that array and convert each item to an object with the keys `id` and `value`
 // Finally, return a promise with the new array
 
-function arrayConverter(arrayPromise) {
+function arrayConverter(arrayPromise: Promise<[]>) {
   return arrayPromise;
 }
 
@@ -21,12 +21,10 @@ function arrayConverter(arrayPromise) {
 // Catch the rejection and throw an error with the message "Promise rejected: " followed by the message from the caught rejection
 // E.G "Promise rejected: too many bees"
 
-function caughtPromise(rejected) {
-  return rejected;
+function caughtPromise(rejected: Promise<any>) {
+  return rejected.catch((e) => {
+    throw new Error();
+  });
 }
 
-module.exports = {
-  myFirstPromise,
-  arrayConverter,
-  caughtPromise,
-};
+export { myFirstPromise, arrayConverter, caughtPromise };

@@ -1,4 +1,4 @@
-const _ = require("../2-functional");
+import _ from "../2-functional";
 
 describe("_.reduce", () => {
   test("Reduces an array without a default", () => {

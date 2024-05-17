@@ -2,17 +2,22 @@
   "name": "corejs",
   "version": "1.0.0",
   "description": "",
-  "main": "",
   "scripts": {
-    "exercise::basics": "jest exercises[/\\]__tests__[/\\]1-theBasics.test.js --watch",
-    "exercise::functional": "jest exercises[/\\]__tests__[/\\]2-functional.test.js --watch",
-    "exercise::object-oriented": "jest exercises[/\\]__tests__[/\\]3-objectOriented.test.js --watch",
-    "exercise::promises": "jest exercises[/\\]__tests__[/\\]4-promises.test.js --watch"
+    "test": "jest",
+    "exercise::basics": "jest exercises[/\\]__tests__[/\\]1-basics.test.ts --watch",
+    "exercise::functional": "jest exercises[/\\]__tests__[/\\]2-functional.test.ts --watch",
+    "exercise::object-oriented": "jest exercises[/\\]__tests__[/\\]3-objectOriented.test.ts --watch",
+    "exercise::promises": "jest exercises[/\\]__tests__[/\\]4-promises.test.ts --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "jest": "^29.5.0",
     "prettier": "^2.4.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.5"
   }
 }

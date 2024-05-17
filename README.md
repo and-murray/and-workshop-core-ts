@@ -3,7 +3,7 @@
 ## Getting Started
 
 1. fork and clone this repo on your machine
-2. install or update nodejs to version 18: `brew install node@18`
+2. run the setup script: `./setup.sh`
 3. install node modules: `npm install`
 
 ## Running exercises
