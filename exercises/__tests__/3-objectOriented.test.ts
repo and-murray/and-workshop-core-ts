@@ -1,4 +1,4 @@
-import { moduleCalc, ClassCalc, StaticClassCalc } from "../3-objectOriented";
+import { moduleCalc, ClassCalc } from "../3-objectOriented";
 
 // These tests won't even compile until you have implemtations!
 describe.each([

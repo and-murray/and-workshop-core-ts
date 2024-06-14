@@ -9,23 +9,6 @@ else
 fi
 
 
-# vscode
-if [ ! -d "/Applications/Visual Studio Code.app" ]; then
-    echo "Visual Studio Code is not installed. Installing Visual Studio Code"
-    brew install --cask visual-studio-code
-else
-    echo "Visual Studio Code is already installed."
-fi
-
-# Check if the "ms-toolsai.jupyter" extension is installed
-code_path="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
-if "$code_path" --list-extensions 2>/dev/null | grep -q "ms-toolsai.jupyter"; then
-    echo "The 'ms-toolsai.jupyter' extension is already installed."
-else
-    echo "The 'ms-toolsai.jupyter' extension is not installed. Installing the extension..."
-    "$code_path" --install-extension ms-toolsai.jupyter
-fi
-
 # nvm
 if [ ! -d "$HOME/.nvm" ]; then
     echo "nvm is not installed. Installing nvm..."
@@ -65,7 +48,7 @@ fi
 if [ ! -d "$HOME/.deno" ]; then
     echo "deno is not installed. Installing deno..."
     curl -fsSL https://deno.land/x/install/install.sh | sh
-    echo 'export DENO_INSTALL="/Users/tdo261/.deno"' >> ~/.zshrc
+    echo 'export DENO_INSTALL="$HOME/.deno"' >> ~/.zshrc
     echo 'export PATH="$DENO_INSTALL/bin:$PATH"' >> ~/.zshrc
     source ~/.zshrc
     deno jupyter --unstable --install

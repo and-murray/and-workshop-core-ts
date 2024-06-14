@@ -2,9 +2,11 @@
 
 ## Getting Started
 
-1. fork and clone this repo on your machine
-2. run the setup script: `./setup.sh`
-3. install node modules: `npm install`
+1. Clone this repo on your machine
+2. Install VSCode
+3. Install Jupyter Extension Pack - `ms-toolsai.jupyter`
+4. run the setup script: `./setup.sh`
+5. install node modules: `npm install`
 
 ## Running exercises
 
