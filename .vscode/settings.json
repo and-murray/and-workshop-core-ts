@@ -1,11 +1,6 @@
 {
-    "deno.enable": true,
     "deno.enablePaths": [
         "examples/"
     ],
     "deno.unstable": true,
-    "deno.lint": true,
-    "[typescript]": {
-        "editor.defaultFormatter": "denoland.vscode-deno"
-    }
 }
