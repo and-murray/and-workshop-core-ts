@@ -8,7 +8,6 @@ else
     echo "Homebrew is already installed."
 fi
 
-
 # nvm
 if [ ! -d "$HOME/.nvm" ]; then
     echo "nvm is not installed. Installing nvm..."
