@@ -36,12 +36,6 @@ If it fails, or you find that the Jupyter notebooks are not working then manuall
 - Deno Kernel for Jupyter
   - `deno jupyter --unstable --install`
 
-```
-curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>~/.zprofile
-source ~/.zprofile
-```
-
 ### Errors when running code blocks in notebooks
 
 - Check dependencies are all installed correctly.
